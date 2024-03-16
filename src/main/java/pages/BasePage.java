@@ -20,7 +20,7 @@ public class BasePage {
     public BasePage() {
     }
 
-    public static SearchResultsPage searchForText(String searchText){
+    public SearchResultsPage searchForText(String searchText){
         driver.findElement(searchField).click();
         driver.findElement(searchField).sendKeys(searchText);
         driver.findElement(searchButton).click();

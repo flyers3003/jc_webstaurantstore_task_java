@@ -17,7 +17,7 @@ public class SearchTests extends BaseTests {
         HomePage homePage = BasePage.returnHomePage();
         //From the Home Page, enter the text "stainless work table" into the search bar and perform a search
         //The resulting search should now put us on the Search Results Page
-        SearchResultsPage searchResultsPage = BasePage.searchForText("stainless work table");
+        SearchResultsPage searchResultsPage = homePage.searchForText("stainless work table");
 
         //The Search Results Page should contain text with the number of results found for the search string
         String resultsTitle = searchResultsPage.getSearchResultsTitleText();
