@@ -9,9 +9,9 @@ import java.time.Duration;
 
 public class BasePage {
     private static WebDriver driver;
-    private static By searchField = By.cssSelector("input[data-testid='searchval']");
-    private static By searchButton = By.xpath("//*[@id=\"searchForm\"]/div/button");
-    private static By cartButton = By.cssSelector("a[data-testid='cart-button']");
+    private static final By searchField = By.cssSelector("input[data-testid='searchval']");
+    private static final By searchButton = By.xpath("//*[@id=\"searchForm\"]/div/button");
+    private static final By cartButton = By.cssSelector("a[data-testid='cart-button']");
     public Duration waitTime = Duration.ofSeconds(5);
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
