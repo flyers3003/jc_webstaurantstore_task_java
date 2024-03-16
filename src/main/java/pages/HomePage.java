@@ -6,7 +6,7 @@ public class HomePage extends BasePage{
     private static WebDriver driver;
 
     public HomePage(WebDriver driver) {
-        this.driver = driver;
+        HomePage.driver = driver;
     }
 }
 
