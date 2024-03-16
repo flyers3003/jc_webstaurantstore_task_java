@@ -83,7 +83,6 @@ public class SearchTests extends BaseTests {
         {
             System.out.println("ERROR: Cart Item text " + cartItemDescription + " does not match last search result " + lastSearchResultDescription);
         }
-        System.out.println(cartItemDescription + "\n" + lastSearchResultDescription);
         cartPage.clearCart();
         try{
             assertEquals(cartPage.getEmptyCartText(), "Your cart is empty.");
