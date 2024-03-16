@@ -27,8 +27,7 @@ public class CartPage extends BasePage{
         driver.findElement(modalConfirmButton).click();
     }
     public String getEmptyCartText (){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(emptyCartText));
+        new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(emptyCartText));
         return driver.findElement(emptyCartText).getText();
     }
 }

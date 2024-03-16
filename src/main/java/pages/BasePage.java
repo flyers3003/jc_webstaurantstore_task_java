@@ -12,7 +12,7 @@ public class BasePage {
     private static By searchField = By.cssSelector("input[data-testid='searchval']");
     private static By searchButton = By.xpath("//*[@id=\"searchForm\"]/div/button");
     private static By cartButton = By.cssSelector("a[data-testid='cart-button']");
-    private Duration waitTime = Duration.ofSeconds(5);
+    public Duration waitTime = Duration.ofSeconds(5);
     public BasePage(WebDriver driver) {
         BasePage.driver = driver;
     }
