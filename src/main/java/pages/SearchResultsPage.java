@@ -14,13 +14,13 @@ public class SearchResultsPage extends BasePage{
     private By nextPageArrow = By.cssSelector("#paging > nav > ul > li.inline-block.leading-4.align-top.rounded-r-md > a");
     private By addToCartButton = By.cssSelector("#ProductBoxContainer > div.add-to-cart > form > div > div > input.btn.btn-cart.btn-small");
     public SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
+        SearchResultsPage.driver = driver;
     }
     public String getSearchResultsTitleText(){
         return driver.findElement(searchResultsTitle).getText();
     }
     public List<String> getItemDescriptions(){
-        List<String> itemDescriptions = new ArrayList<String>();
+        List<String> itemDescriptions = new ArrayList<>();
         List<WebElement> itemDescriptionsList = driver.findElements(itemDescription);
         for (WebElement element : itemDescriptionsList) {
             itemDescriptions.add(element.getText());
