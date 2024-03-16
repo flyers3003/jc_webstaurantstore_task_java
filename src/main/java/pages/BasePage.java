@@ -14,7 +14,7 @@ public class BasePage {
     private static By cartButton = By.cssSelector("a[data-testid='cart-button']");
     private Duration waitTime = Duration.ofSeconds(5);
     public BasePage(WebDriver driver) {
-        this.driver = driver;
+        BasePage.driver = driver;
     }
 
     public BasePage() {
