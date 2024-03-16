@@ -9,10 +9,10 @@ import java.util.List;
 
 public class SearchResultsPage extends BasePage{
     private static WebDriver driver;
-    private By searchResultsTitle = By.cssSelector("#react_0HN243FQOLSML > div > div.search__wrap > h1");
-    private By itemDescription = By.cssSelector("#ProductBoxContainer > div > a > span[data-testid='itemDescription']");
-    private By nextPageArrow = By.cssSelector("#paging > nav > ul > li.inline-block.leading-4.align-top.rounded-r-md > a");
-    private By addToCartButton = By.cssSelector("#ProductBoxContainer > div.add-to-cart > form > div > div > input.btn.btn-cart.btn-small");
+    private final By searchResultsTitle = By.cssSelector("#react_0HN243FQOLSML > div > div.search__wrap > h1");
+    private final By itemDescription = By.cssSelector("#ProductBoxContainer > div > a > span[data-testid='itemDescription']");
+    private final By nextPageArrow = By.cssSelector("#paging > nav > ul > li.inline-block.leading-4.align-top.rounded-r-md > a");
+    private final By addToCartButton = By.cssSelector("#ProductBoxContainer > div.add-to-cart > form > div > div > input.btn.btn-cart.btn-small");
     public SearchResultsPage(WebDriver driver) {
         SearchResultsPage.driver = driver;
     }
