@@ -77,13 +77,16 @@ public class SearchTests extends BaseTests {
         CartPage cartPage = searchResultsPage.selectCart();
         String cartItemDescription = cartPage.getItemDescriptionText();
         String lastSearchResultDescription = itemDescriptions.get(itemDescriptions.size() -1);
+        //Verify the cart's item description matches the last search result description
         try {
             assertEquals(cartItemDescription, lastSearchResultDescription);
         }catch (AssertionError e)
         {
             System.out.println("ERROR: Cart Item text " + cartItemDescription + " does not match last search result " + lastSearchResultDescription);
         }
+        //Clear the cart
         cartPage.clearCart();
+        //Verify the cart is empty
         try{
             assertEquals(cartPage.getEmptyCartText(), "Your cart is empty.");
         }catch (AssertionError e)
