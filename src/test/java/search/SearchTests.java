@@ -15,6 +15,12 @@ public class SearchTests extends BaseTests {
     @Test
     public void testTableSearchResults(){
         HomePage homePage = BasePage.returnHomePage();
+        try{
+            assertTrue(homePage.verifyHomePage());
+        }catch (AssertionError e)
+        {
+            System.out.println("ERROR: Not on the Homepage?");
+        }
         //From the Home Page, enter the text "stainless work table" into the search bar and perform a search
         //The resulting search should now put us on the Search Results Page
         SearchResultsPage searchResultsPage = homePage.searchForText("stainless work table");
