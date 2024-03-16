@@ -8,7 +8,6 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import pages.BasePage;
-import pages.HomePage;
 
 public class BaseTests {
     private WebDriver driver;
