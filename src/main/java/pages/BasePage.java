@@ -30,4 +30,7 @@ public class BasePage {
         new WebDriverWait(driver, waitTime).until(ExpectedConditions.elementToBeClickable(cartButton)).click();
         return new CartPage(driver);
     }
+    public static HomePage returnHomePage(){
+        return new HomePage(driver);
+    }
 }

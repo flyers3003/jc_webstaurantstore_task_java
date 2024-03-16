@@ -4,6 +4,7 @@ import base.BaseTests;
 import org.testng.annotations.Test;
 import pages.BasePage;
 import pages.CartPage;
+import pages.HomePage;
 import pages.SearchResultsPage;
 import static org.testng.Assert.*;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class SearchTests extends BaseTests {
     @Test
     public void testTableSearchResults(){
+        HomePage homePage = BasePage.returnHomePage();
         //From the Home Page, enter the text "stainless work table" into the search bar and perform a search
         //The resulting search should now put us on the Search Results Page
         SearchResultsPage searchResultsPage = BasePage.searchForText("stainless work table");
