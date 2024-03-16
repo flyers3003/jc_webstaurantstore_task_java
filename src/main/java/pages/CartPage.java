@@ -7,12 +7,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class CartPage extends BasePage{
-    private WebDriver driver;
+    private final WebDriver driver;
 
-    private By itemDescription = By.cssSelector("div[class^='cartItem'] > div > span > a");
-    private By emptyCartButton = By.cssSelector("button[class^='emptyCartButton']");
-    private By modalConfirmButton = By.xpath(".//footer/button[contains(text(),'Empty')]");
-    private By emptyCartText = By.cssSelector("div[class='empty-cart__text'] > p");
+    private final By itemDescription = By.cssSelector("div[class^='cartItem'] > div > span > a");
+    private final By emptyCartButton = By.cssSelector("button[class^='emptyCartButton']");
+    private final By modalConfirmButton = By.xpath(".//footer/button[contains(text(),'Empty')]");
+    private final By emptyCartText = By.cssSelector("div[class='empty-cart__text'] > p");
     public CartPage(WebDriver driver) {
         this.driver = driver;
     }
