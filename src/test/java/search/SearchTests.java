@@ -14,6 +14,7 @@ import java.util.List;
 public class SearchTests extends BaseTests {
     @Test
     public void testTableSearchResults(){
+        //Verifying that user is  starting on the HomePage
         HomePage homePage = BasePage.returnHomePage();
         try{
             assertTrue(homePage.verifyHomePage());
@@ -49,7 +50,7 @@ public class SearchTests extends BaseTests {
             List<String> itemDescriptions = searchResultsPage.getItemDescriptions();
             //Iterate on each description on the page and verify it contains "Table"
             for (String string : itemDescriptions){
-                //Did a try...catch to be able to keep going through the test if "Table" is not found in a description
+                //Did a try...catch to be able to keep going through the test IF "Table" is not found in a description
                 try {
                     assertTrue(string.contains("Table"));
                 }catch (AssertionError e)
@@ -60,6 +61,7 @@ public class SearchTests extends BaseTests {
             }
             searchResultsPage.advanceToNextPage();
         }
+        //Iterating on remaining items on the last page
         List<String> itemDescriptions = searchResultsPage.getItemDescriptions();
         for (String string : itemDescriptions){
             try {

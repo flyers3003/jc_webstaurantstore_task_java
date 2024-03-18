@@ -21,10 +21,12 @@ public class CartPage extends BasePage{
         return driver.findElement(itemDescription).getAttribute("title");
     }
     public void clearCart(){
+        //May need to update to allow for some time for either item to be visible
         driver.findElement(emptyCartButton).click();
         driver.findElement(modalConfirmButton).click();
     }
     public String getEmptyCartText (){
+        //After emptying cart, a little time may be needed for confirmation text to be visible
         new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(emptyCartText));
         return driver.findElement(emptyCartText).getText();
     }

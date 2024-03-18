@@ -3,6 +3,8 @@ package pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
+//Didn't really need to have HomePage to complete task since search bar is accessible as part of BasePage,
+//but added it to show that further tests that accessed HomePage specific items could be done through here
 public class HomePage extends BasePage{
     private static WebDriver driver;
 
