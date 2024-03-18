@@ -18,6 +18,8 @@ public class CartPage extends BasePage{
     }
 
     public String getItemDescriptionText (){
+        //After having navigated to cart, may need time for item description to be visible
+        new WebDriverWait(driver, waitTime).until(ExpectedConditions.visibilityOfElementLocated(itemDescription));
         return driver.findElement(itemDescription).getAttribute("title");
     }
     public void clearCart(){
