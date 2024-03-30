@@ -15,7 +15,8 @@ public class SearchTests extends BaseTests {
     @Test
     public void testTableSearchResults(){
         //Verifying that user is  starting on the HomePage
-        HomePage homePage = BasePage.returnHomePage();
+        BasePage basePage = new BasePage(driver);
+        HomePage homePage = basePage.returnHomePage();
         try{
             assertTrue(homePage.verifyHomePage());
         }catch (AssertionError e)
@@ -29,18 +30,18 @@ public class SearchTests extends BaseTests {
         //The Search Results Page should contain text with the number of results found for the search string
         String resultsTitle = searchResultsPage.getSearchResultsTitleText();
 
-        //The Search Results Page has a maximum of 60 items shown on one page - this does not appear to be adjustable
-        int maxSearchResultPerPage = 60;
+        //Find the number of search results per page
+        int maxSearchResultPerPage = searchResultsPage.getNumberSearchResultsPerPage();
 
         //Get the total number of results from the Title by parsing the String prior to the word " Results"
         int totalResults = Integer.parseInt(resultsTitle.substring(0, resultsTitle.indexOf(" Results")));
         //The number of pages of results should equal the total/60
         int numPages = totalResults/maxSearchResultPerPage;
-        //The number of results on the last page will either be (totalResults - numPages*60) or 60 if totalResults is perfectly divisible by 60
+        //The number of results on the last page will either be (totalResults - numPages*maxSearchResultPerPage) or exactly maxSearchResultPerPage if perfectly divisible
         int lastPageTotal = totalResults-(numPages*maxSearchResultPerPage) > 0 ? totalResults-(numPages*maxSearchResultPerPage) : maxSearchResultPerPage;
         //Just printing out the information for verification purposes.  CAN BE REMOVED later.
         System.out.println("There are " + totalResults +
-                " total results found, which means there are " + numPages +
+                " total results found, with " + maxSearchResultPerPage + " results per page, which means there are " + numPages +
                 " pages of results, with " + lastPageTotal + " items on the last page");
 
         //Here we need to verify that every search result has the word "Table" in its description
@@ -56,10 +57,10 @@ public class SearchTests extends BaseTests {
                 }catch (AssertionError e)
                 {
                     //Want to show exactly which search result had an error and what the description text is that failed
-                    System.out.println("ERROR: Search result " + ((i * 60) + itemDescriptions.indexOf(string) + 1) + ", \"" + string + "\" did not contain \"table\"");
+                    System.out.println("ERROR: Search result " + ((i * maxSearchResultPerPage) + itemDescriptions.indexOf(string) + 1) + ", \"" + string + "\" did not contain \"table\"");
                 }
             }
-            searchResultsPage.advanceToNextPage();
+            searchResultsPage.goToNextPage();
         }
         //Iterating on remaining items on the last page
         List<String> itemDescriptions = searchResultsPage.getItemDescriptions();
@@ -68,7 +69,7 @@ public class SearchTests extends BaseTests {
                 assertTrue(string.contains("Table"));
             }catch (AssertionError e)
             {
-                System.out.println("ERROR: Search result " + (((numPages - 1) * 60) + itemDescriptions.indexOf(string) + 1) + ", \"" + string + "\" did not contain \"table\"");
+                System.out.println("ERROR: Search result " + (((numPages - 1) * maxSearchResultPerPage) + itemDescriptions.indexOf(string) + 1) + ", \"" + string + "\" did not contain \"table\"");
             }
         }
 
@@ -76,7 +77,7 @@ public class SearchTests extends BaseTests {
         searchResultsPage.selectLastAddToCartButton();
 
         //Navigate to the cart
-        CartPage cartPage = searchResultsPage.selectCart();
+        CartPage cartPage = searchResultsPage.clickCartButton();
         String cartItemDescription = cartPage.getItemDescriptionText();
         String lastSearchResultDescription = itemDescriptions.get(itemDescriptions.size() -1);
         //Verify the cart's item description matches the last search result description
